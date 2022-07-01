@@ -1,0 +1,20 @@
+=== apache2 ===
+
+<VirtualHost *:80>
+    ProxyPreserveHost On
+
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / http://127.0.0.1:8080/
+</VirtualHost>
+
+
+=== nginx ===
+
+server {
+        listen 80;
+        listen [::]:80;
+        server_name example.com;
+        location / {
+         proxy_pass http://localhost:5000;
+        }
+}
